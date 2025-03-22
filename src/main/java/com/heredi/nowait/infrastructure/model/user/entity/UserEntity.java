@@ -1,6 +1,6 @@
 package com.heredi.nowait.infrastructure.model.user.entity;
 
-import com.heredi.nowait.infrastructure.model.business.entity.BusinessEntity;
+import com.heredi.nowait.infrastructure.model.home.entity.HomeEntity;
 import com.heredi.nowait.infrastructure.model.paymentInfo.entity.PaymentInfoEntity;
 import com.heredi.nowait.infrastructure.model.authority.authority.AuthorityEntity;
 import com.heredi.nowait.infrastructure.model.shift.entity.ShiftEntity;
@@ -46,10 +46,10 @@ public class UserEntity {
     @ToString.Exclude
     private List<PaymentInfoEntity> paymentInfoEntityList;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "business_id")
     @ToString.Exclude
-    private BusinessEntity business;
+    private HomeEntity homeEntity;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @ToString.Exclude

@@ -128,15 +128,15 @@ public class UserValidationService {
                     "method is null");
         }else{
             boolean isAdmin = "ADMIN".equals(createUserRequestDTO.getRoleRequestDTO().getName());
-            boolean hasBusinessInfo = createUserRequestDTO.getBusinessRequestDTO() != null;
+            boolean hasHomeInfo = createUserRequestDTO.getHomeRequestDTO() != null;
             boolean hasPaymentInfo = createUserRequestDTO.getPaymentInfoRequestDTOList() != null
                     && !createUserRequestDTO.getPaymentInfoRequestDTOList().isEmpty();
 
-            if (isAdmin && (!hasBusinessInfo || !hasPaymentInfo)) {
+            if (isAdmin && (!hasHomeInfo || !hasPaymentInfo)) {
                 this.errorCodes.add(AppErrorCode.ADMIN_ROLE_NEEDS_PAYMENT_AND_BUSINESS);
                 this.details.add("");
             }
-            if (!isAdmin && (hasBusinessInfo || hasPaymentInfo)) {
+            if (!isAdmin && (hasHomeInfo || hasPaymentInfo)) {
                 this.errorCodes.add(AppErrorCode.ONLY_ADMIN_CAN_RECORD_PAYMENT_OR_BUSINESS);
                 this.details.add("");
             }

@@ -1,7 +1,6 @@
 package com.heredi.nowait.infrastructure.model.user.mapper;
 import com.heredi.nowait.domain.user.model.Users;
 import com.heredi.nowait.infrastructure.model.user.entity.UserEntity;
-import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mappings;
 import org.mapstruct.Mapping;
@@ -18,7 +17,7 @@ public interface UserEntityMapper {
             @Mapping(source = "phoneNumber", target = "phoneNumber"),
             @Mapping(source = "authorityEntity", target = "authority"),
             @Mapping(source = "paymentInfoEntityList", target = "paymentInfoList"),
-            @Mapping(source = "business", target = "business")
+            @Mapping(source = "homeEntity", target = "home")
     })
     Users toUser(UserEntity userEntity);
 
@@ -31,7 +30,7 @@ public interface UserEntityMapper {
             @Mapping(source = "password", target = "password"),
             @Mapping(source = "phoneNumber", target = "phoneNumber"),
             @Mapping(source = "authority", target = "authorityEntity"),
-            @Mapping(source = "business", target = "business")
+            @Mapping(source = "home", target = "homeEntity")
     })
     UserEntity toUserEntity(Users user);
 }

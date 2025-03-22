@@ -1,6 +1,6 @@
 package com.heredi.nowait.application.model.user.dto.in;
 
-import com.heredi.nowait.application.model.business.dto.in.BusinessRequestDTO;
+import com.heredi.nowait.application.model.home.dto.in.HomeRequestDTO;
 import com.heredi.nowait.application.model.paymentInfo.dto.in.PaymentInfoRequestDTO;
 import com.heredi.nowait.application.model.role.dto.RoleDTO;
 import com.heredi.nowait.application.model.shift.dto.in.ShiftRequestDTO;
@@ -17,6 +17,6 @@ public class CreateUserRequestDTO {
     private String phoneNumber;
     private RoleDTO roleRequestDTO;
     private List<PaymentInfoRequestDTO> paymentInfoRequestDTOList;
-    private BusinessRequestDTO businessRequestDTO;
+    private HomeRequestDTO homeRequestDTO;
     private List<ShiftRequestDTO> shifts;
 }

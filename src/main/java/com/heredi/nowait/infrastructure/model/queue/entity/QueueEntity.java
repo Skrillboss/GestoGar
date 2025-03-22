@@ -1,15 +1,12 @@
 package com.heredi.nowait.infrastructure.model.queue.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.heredi.nowait.infrastructure.model.item.entity.ItemEntity;
+import com.heredi.nowait.infrastructure.model.householdChore.entity.householdChoreEntity;
 import com.heredi.nowait.infrastructure.model.shift.entity.ShiftEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.hibernate.annotations.Formula;
 
 import java.time.Duration;
 import java.time.LocalTime;
@@ -45,7 +42,7 @@ public class QueueEntity {
     @OneToOne
     @JoinColumn(name = "item_id", referencedColumnName = "id")
     @ToString.Exclude
-    private ItemEntity item;
+    private householdChoreEntity item;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ShiftEntity> shifts;

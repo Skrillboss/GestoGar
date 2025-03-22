@@ -1,10 +1,10 @@
 package com.heredi.nowait.application.model.item.mapper;
 
 import com.heredi.nowait.application.model.item.dto.in.ItemRequestDTO;
-import com.heredi.nowait.application.model.item.dto.out.ItemResponseDTO;
+import com.heredi.nowait.application.model.item.dto.out.HouseholdChoresResponseDTO;
 import com.heredi.nowait.application.model.queue.mapper.QueueMapper;
-import com.heredi.nowait.domain.item.model.Item;
-import com.heredi.nowait.domain.item.model.Item.ItemStatus;
+import com.heredi.nowait.domain.householdChore.model.householdChore;
+import com.heredi.nowait.domain.householdChore.model.householdChore.ItemStatus;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -20,56 +20,56 @@ public class ItemMapper {
     }
 
     // Convierte de Item a ItemDTO
-    public ItemResponseDTO toItemResponseDTO(Item item) {
-        if (item == null) {
+    public HouseholdChoresResponseDTO toItemResponseDTO(householdChore householdChore) {
+        if (householdChore == null) {
             return null;
         }
 
-        ItemResponseDTO dto = new ItemResponseDTO();
-        dto.setId(item.getId().toString());
-        dto.setName(item.getName());
-        dto.setDescription(item.getDescription());
-        dto.setBusinessId(item.getBusiness().getId().toString());
-        dto.setBusinessName(item.getBusiness().getName());
-        dto.setRating(item.getRating());
-        dto.setMainImagePath(item.getMainImagePath());
-        dto.setSecondaryImagePath(item.getSecondaryImagePath());
-        dto.setStatus(item.getStatus().name());
-        dto.setQueueResponseDTO(queueMapper.toQueueResponseDTO(item.getQueue()));
+        HouseholdChoresResponseDTO dto = new HouseholdChoresResponseDTO();
+        dto.setId(householdChore.getId().toString());
+        dto.setName(householdChore.getName());
+        dto.setDescription(householdChore.getDescription());
+        dto.setBusinessId(householdChore.getHome().getId().toString());
+        dto.setBusinessName(householdChore.getHome().getName());
+        dto.setRating(householdChore.getRating());
+        dto.setMainImagePath(householdChore.getMainImagePath());
+        dto.setSecondaryImagePath(householdChore.getSecondaryImagePath());
+        dto.setStatus(householdChore.getStatus().name());
+        dto.setQueueResponseDTO(queueMapper.toQueueResponseDTO(householdChore.getQueue()));
 
 
         return dto;
     }
 
-    public List<ItemResponseDTO> toItemsDTO(List<Item> items){
-        if(items == null){
+    public List<HouseholdChoresResponseDTO> toItemsDTO(List<householdChore> householdChores){
+        if(householdChores == null){
             return null;
         }
 
-        return items.stream()
+        return householdChores.stream()
                 .map(this::toItemResponseDTO)
                 .collect(Collectors.toList());
     }
 
     // Convierte de ItemDTO a Item
-    public Item toItem(ItemRequestDTO dto) {
+    public householdChore toItem(ItemRequestDTO dto) {
         if (dto == null) {
             return null;
         }
 
-        Item item = new Item();
-        item.setName(dto.getName());
-        item.setDescription(dto.getDescription());
-        item.setRating(0.0);
-        item.setMainImagePath(dto.getMainImagePath());
-        item.setSecondaryImagePath(dto.getSecondaryImagePath());
-        item.setStatus(ItemStatus.valueOf(dto.getStatus()));
-        item.setQueue(queueMapper.toQueue(dto.getQueueRequestDTO()));
+        householdChore householdChore = new householdChore();
+        householdChore.setName(dto.getName());
+        householdChore.setDescription(dto.getDescription());
+        householdChore.setRating(0.0);
+        householdChore.setMainImagePath(dto.getMainImagePath());
+        householdChore.setSecondaryImagePath(dto.getSecondaryImagePath());
+        householdChore.setStatus(ItemStatus.valueOf(dto.getStatus()));
+        householdChore.setQueue(queueMapper.toQueue(dto.getQueueRequestDTO()));
 
-        return item;
+        return householdChore;
     }
 
-    public List<Item> toItems(List<ItemRequestDTO> itemsDTO){
+    public List<householdChore> toItems(List<ItemRequestDTO> itemsDTO){
         if(itemsDTO ==  null){
             return null;
         }

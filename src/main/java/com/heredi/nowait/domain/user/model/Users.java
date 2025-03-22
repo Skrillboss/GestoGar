@@ -1,6 +1,6 @@
 package com.heredi.nowait.domain.user.model;
 
-import com.heredi.nowait.domain.business.model.Business;
+import com.heredi.nowait.domain.home.model.Home;
 import com.heredi.nowait.domain.paymentInfo.model.PaymentInfo;
 import com.heredi.nowait.domain.role.model.Authority;
 import com.heredi.nowait.domain.shift.model.Shift;
@@ -33,7 +33,7 @@ public class Users {
 
     private List<PaymentInfo> paymentInfoList;
 
-    private Business business;
+    private Home home;
 
     private List<Shift> shifts;
 }

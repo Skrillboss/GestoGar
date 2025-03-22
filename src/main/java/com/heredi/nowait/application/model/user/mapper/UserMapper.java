@@ -1,6 +1,6 @@
 package com.heredi.nowait.application.model.user.mapper;
 
-import com.heredi.nowait.application.model.business.mapper.BusinessMapper;
+import com.heredi.nowait.application.model.home.mapper.HomeMapper;
 import com.heredi.nowait.application.model.paymentInfo.mapper.PaymentInfoMapper;
 import com.heredi.nowait.application.model.role.dto.mapper.RoleMapper;
 import com.heredi.nowait.application.model.shift.mapper.ShiftMapper;
@@ -14,13 +14,13 @@ public class UserMapper {
 
     private final RoleMapper roleMapper;
     private final PaymentInfoMapper paymentInfoMapper;
-    private final BusinessMapper businessMapper;
+    private final HomeMapper homeMapper;
     private final ShiftMapper shiftMapper;
 
-    public UserMapper(RoleMapper roleMapper, PaymentInfoMapper paymentInfoMapper, BusinessMapper businessMapper, ShiftMapper shiftMapper) {
+    public UserMapper(RoleMapper roleMapper, PaymentInfoMapper paymentInfoMapper, HomeMapper homeMapper, ShiftMapper shiftMapper) {
         this.roleMapper = roleMapper;
         this.paymentInfoMapper = paymentInfoMapper;
-        this.businessMapper = businessMapper;
+        this.homeMapper = homeMapper;
         this.shiftMapper = shiftMapper;
     }
 
@@ -36,7 +36,7 @@ public class UserMapper {
         dto.setPhoneNumber(user.getPhoneNumber());
         dto.setRoleDTO(roleMapper.toRoleDTO(user.getAuthority()));
         dto.setPaymentInfoResponseDTOList(paymentInfoMapper.toPaymentInfoListResponseDTO(user.getPaymentInfoList()));
-        dto.setBusiness(businessMapper.toBusinessDTO(user.getBusiness()));
+        dto.setHomeResponseDTO(homeMapper.toHomeDTO(user.getHome()));
 
         return dto;
     }
@@ -54,7 +54,7 @@ public class UserMapper {
         user.setPhoneNumber(createUserRequestDTO.getPhoneNumber());
         user.setAuthority(roleMapper.toRole(createUserRequestDTO.getRoleRequestDTO()));
         user.setPaymentInfoList(paymentInfoMapper.toPaymentInfoList(createUserRequestDTO.getPaymentInfoRequestDTOList()));
-        user.setBusiness(businessMapper.toBusiness(createUserRequestDTO.getBusinessRequestDTO()));
+        user.setHome(homeMapper.toHome(createUserRequestDTO.getHomeRequestDTO()));
         user.setShifts(shiftMapper.toShiftList(createUserRequestDTO.getShifts()));
 
         return user;

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/user")
@@ -34,7 +33,7 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<UserResponseDTO> createUser(@RequestBody CreateUserRequestDTO createUserRequestDTO) throws MessagingException {
-        return new ResponseEntity<>(userService.createUser(createUserRequestDTO), HttpStatus.CREATED);
+        return new ResponseEntity<UserResponseDTO>(userService.createUser(createUserRequestDTO), HttpStatus.CREATED);
     }
 
     @GetMapping("/verifyEmail/{nickName}/{email}")
